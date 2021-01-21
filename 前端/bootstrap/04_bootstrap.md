@@ -33,9 +33,7 @@
 	pull的时候调整的是right，分13个等级（0到12）
 			0时为auto
 
-### 响应式工具
-
-### 容器与栅格盒模型设计的精妙之处
+### 响应式工具 容器与栅格盒模型设计的精妙之处
 		container 提供了一个15px的padding
 		row 是 column 直接存在的容器，row 默认最多可有12个 column，
 	同时作为都是左浮动的 column 的 wrapper，自带 clearfix 的性质。
