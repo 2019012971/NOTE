@@ -31,7 +31,7 @@
 			0时为auto
 			
 	pull的时候调整的是right，分13个等级（0到12）
-			0时为auto
+			0时为 auto
 
 ### 响应式工具 容器与栅格盒模型设计的精妙之处
 		container 提供了一个15px的padding
