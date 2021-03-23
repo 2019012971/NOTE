@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <context:component-scan base-package="org.crazyit.app.controller"/>
+<!--    <mvc:resources mapping="/res/**" location="resources"/>-->
+<!--    <mvc:resources mapping="/imgs/**" location="images"/>-->
+    <mvc:default-servlet-handler/>
+    <!-- 将/resources/路径下的资源映射为/res/**虚拟路径的资源 -->
+    <mvc:resources mapping="/res/**" location="WEB-INF/resources/" />
+    <!-- 将/images/路径下的资源映射为/imgs/**虚拟路径的资源 -->
+    <mvc:resources mapping="/imgs/**" location="WEB-INF/images/" />
+    <mvc:resources mapping="/uploads/**" location="WEB-INF/uploads/" />
+    <mvc:annotation-driven/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/content/"
+          p:suffix=".jsp"/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+</beans>

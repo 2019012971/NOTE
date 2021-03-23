@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.crazyit.app.dao.BookMapper">
+    <insert id="save" parameterType="org.crazyit.app.domain.Book">
+		insert into book_inf values(null, #{title}, #{author}, #{price}, #{cover})
+	</insert>
+    <select id="findById" resultType="org.crazyit.app.domain.Book">
+		select book_id id, book_title title, book_author author,
+		book_price price, book_cover cover from book_inf where book_id=#{id}
+	</select>
+    <select id="findAll" resultType="org.crazyit.app.domain.Book">
+		select book_id id, book_title title, book_author author,
+		book_price price, book_cover cover from book_inf;
+	</select>
+    <update id="update" parameterType="org.crazyit.app.domain.Book">
+		update book_inf set book_title=#{title},
+		book_author=#{author}, book_price=#{price}
+		where book_id=#{id};
+	</update>
+    <delete id="delete">
+		delete from book_inf where book_id=#{id};
+	</delete>
+</mapper>

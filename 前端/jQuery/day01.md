@@ -150,3 +150,126 @@
   })
 </script>
 ```
+## 层次选择器: 查找子元素, 后代元素, 兄弟元素的选择器
+
+1. ancestor descendant
+  在给定的祖先元素下匹配所有的后代元素
+
+2. parent>child
+  在给定的父元素下匹配所有的子元素
+
+3. prev+next
+  匹配所有紧接在 prev 元素后的 next 元素
+
+4. prev~siblings
+  匹配 prev 元素之后的所有 siblings 元素
+### 例子：
+```js
+<script type="text/javascript">
+  /*
+   需求:
+   1. 选中ul下所有的的span
+   2. 选中ul下所有的子元素span
+   3. 选中class为box的下一个li
+   4. 选中ul下的class为box的元素后面的所有兄弟元素
+   */
+  // 1. 选中ul下所有的的span
+  $('ul span').css('background', 'yellow')
+
+  // 2. 选中ul下所有的子元素span
+  $('ul>span').css('background', 'yellow')
+
+  // 3. 选中class为box的下一个li
+  $('.box+li').css('background', 'yellow')
+
+  // 4. 选中ul下的class为box的元素后面的所有兄弟元素
+  $('ul .box~*').css('background', 'yellow')
+</script>
+```
+
+## 过滤选择器
+* 在原有匹配元素中筛选出其中一些
+  * :first
+  * :last
+  * :eq(index)
+  * :lt
+  * :gt
+  * :odd
+  * :even
+  * :not(selector)
+  * :hidden
+  * :visible
+  * [attrName]
+  * [attrName=value]
+### 例子
+```js
+<script type="text/javascript">
+
+  /*
+   需求:
+   1. 选择第一个div
+   2. 选择最后一个class为box的元素
+   3. 选择所有class属性不为box的div
+   4. 选择第二个和第三个li元素
+   5. 选择内容为BBBBB的li
+   6. 选择隐藏的li
+   7. 选择有title属性的li元素
+   8. 选择所有属性title为hello的li元素
+   */
+  //1. 选择第一个div
+  $('div:first').css('background', 'red')
+
+  //2. 选择最后一个class为box的元素
+  $('.box:last').css('background', 'red')
+
+  //3. 选择所有class属性不为box的div
+  $('div:not(.box)').css('background', 'red')  //没有class属性也可以
+
+  //4. 选择第二个和第三个li元素
+  // $('li:gt(0):lt(2)').css('background', 'red') // 多个过滤选择器不是同时执行, 而是依次
+  $('li:lt(3):gt(0)').css('background', 'red')
+
+  //5. 选择内容为BBBBB的li
+  $('li:contains("BBBBB")').css('background', 'red')
+
+  //6. 选择隐藏的li
+  console.log($('li:hidden').length, $('li:hidden')[0])
+
+  //7. 选择有title属性的li元素
+  $('li[title]').css('background', 'red')
+
+  //8. 选择所有属性title为hello的li元素
+  $('li[title="hello"]').css('background', 'red')
+
+</script>
+```
+## 表单选择器
+* 表单
+      * :input
+      * :text
+      * :checkbox
+      * :radio
+      * :checked: 选中的
+### 例子
+```js
+<script type="text/javascript">
+  /*
+   需求:
+   1. 选择不可用的文本输入框
+   2. 显示选择爱好 的个数
+   3. 显示选择的城市名称
+   */
+  //1. 选择不可用的文本输入框
+  $(':text:disabled').css('background', 'red')
+
+  //2. 显示选择爱好 的个数
+  console.log($(':checkbox:checked').length)
+
+  //3. 显示选择的城市名称
+  $(':submit').click(function () {
+    var city = $('select>option:selected').html() // 选择的option的标签体文本
+    city = $('select').val()  // 选择的option的value属性值
+    alert(city)
+  })
+</script>
+```

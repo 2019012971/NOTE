@@ -1,0 +1,5 @@
+#
+#Tue Mar 23 21:21:01 CST 2021
+org.crazyit.app.dao.BookMapper=org.springframework.stereotype.Component
+org.crazyit.app.service.Impl.BookServiceImpl=org.springframework.stereotype.Component
+org.crazyit.app.controller.BookController=org.springframework.stereotype.Component
